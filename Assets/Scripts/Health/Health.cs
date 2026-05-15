@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Health : MonoBehaviour
 {
@@ -34,7 +35,7 @@ public class Health : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.E))
+        if(Keyboard.current[Key.F].wasPressedThisFrame)
         {
             TakeDamage(1);
         }
