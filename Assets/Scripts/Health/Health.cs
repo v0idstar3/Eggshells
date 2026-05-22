@@ -30,27 +30,23 @@ public class Health : MonoBehaviour
         if (currentHealth > 0)
         {
             //player hurt
-            
             SoundManager.instance.PlaySound(hurtSound);
+            return;
         }
-        else
-        {
-            if(!dead)
-            {
-                    // player dead, game over
-                    
-                    // deactivate all attached component classes
-                    foreach (Behaviour component in components)
-                        component.enabled = false;
 
-                    GetComponent<PlayerController>().enabled = false;
-                
-                    dead = true;
-                    SoundManager.instance.PlaySound(deathSound);
+        if (dead) return;
+        
+        // player dead, game over
+        // deactivate all attached component classes
+        foreach (Behaviour component in components)
+            component.enabled = false;
 
-                    GameManager.GameOver();
-            }
-        }
+        GetComponent<PlayerController>().enabled = false;
+    
+        dead = true;
+        SoundManager.instance.PlaySound(deathSound);
+
+        GameManager.GameOver();
     }
     
 
